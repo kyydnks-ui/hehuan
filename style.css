@@ -1,0 +1,173 @@
+/* style.css */
+body {
+    background-color: #1a0b0f; /* 深紫红色背景 */
+    color: #ffd1dc; /* 粉白色文字 */
+    font-family: 'Microsoft YaHei', sans-serif;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    user-select: none; /* 防止双击选中文字影响体验 */
+}
+
+/* 通用面板样式 */
+.panel {
+    background: #2d121b;
+    border: 2px solid #d63384; /* 亮粉色边框 */
+    box-shadow: 0 0 15px rgba(214, 51, 132, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+/* 左侧：主角面板 */
+#player-panel {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.stat-row {
+    margin: 12px 0;
+    font-size: 16px;
+    border-bottom: 1px dashed #5c2838;
+    padding-bottom: 5px;
+}
+
+.highlight {
+    color: #ffeb3b;
+    font-weight: bold;
+}
+
+/* 按钮样式 */
+button {
+    background: #6f42c1;
+    color: white;
+    border: 1px solid #d63384;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.1s;
+}
+
+button:hover {
+    background: #d63384;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:disabled {
+    background: #555;
+    border-color: #333;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* 突破按钮特效 */
+#breakthrough-btn {
+    width: 100%;
+    margin-top: 20px;
+    background: linear-gradient(45deg, #ff9800, #ff5722);
+    border: none;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 87, 34, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
+}
+
+/* 中间：主操作区 */
+#action-panel {
+    width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+#npc-display {
+    border: 1px solid #d63384;
+    background: rgba(0, 0, 0, 0.3);
+    min-height: 180px;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 右侧：后宫列表 */
+#harem-panel {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+}
+
+#harem-list {
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 5px;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: #d63384; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #2d121b; }
+
+.harem-card {
+    background: #3e1925;
+    border-left: 4px solid #d63384;
+    margin-bottom: 8px;
+    padding: 10px;
+    font-size: 13px;
+    position: relative;
+}
+
+.harem-name { font-weight: bold; color: #ff80ab; font-size: 15px; }
+.harem-pps { float: right; color: #4caf50; }
+/* 人物名片弹窗 */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+}
+
+.char-card {
+    width: 350px;
+    background: #2d121b;
+    border: 2px solid #d63384;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(214, 51, 132, 0.5);
+}
+
+.char-card-close {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px; color: #666; cursor: pointer;
+}
+
+.char-card-section {
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #5c2838;
+}
+
+.char-thought {
+    font-style: italic;
+    color: #ff80ab;
+    background: rgba(0,0,0,0.3);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}

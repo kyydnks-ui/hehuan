@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <link rel="icon" href="data:;base64,=">
+    <meta charset="UTF-8">
+    <title>合欢宗：万仙以此为炉</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="player-panel" class="panel">
+        <h2 style="color:#d63384; text-align:center;">🐍 云雾衡</h2>
+        
+        <div class="stat-row">
+            当前境界：<span id="p-realm" class="highlight">凡人</span>
+        </div>
+        
+        <div class="stat-row">
+            <div style="display:flex; justify-content:space-between;">
+                <span>修为：</span>
+                <span><span id="p-power">0</span> / <span id="p-max-power">100</span></span>
+            </div>
+            <div style="background:#555; height:8px; border-radius:4px; margin-top:5px; overflow:hidden;">
+                <div id="power-bar-fill" style="background:#d63384; width:0%; height:100%; transition:width 0.2s;"></div>
+            </div>
+        </div>
+
+        <div class="stat-row">
+            自动收益：<span id="p-pps" class="highlight">0</span> /秒
+        </div>
+
+        <div class="stat-row">
+            <span id="p-child-bonus" style="color:#03a9f4; font-size:14px;">弟子: 0 (加成 +0%)</span>
+        </div>
+        
+        <div class="stat-row">
+            后宫容量：<span id="p-slots">0 / 5</span>
+        </div>
+
+        <button type="button" id="breakthrough-btn" style="display:none;">✨ 冲击瓶颈 ✨</button>
+        <div id="skills-container" style="margin-top:20px; border-top:1px dashed #555; padding-top:10px;">
+            <h3 style="color:#ffd700; margin:5px 0;">📜 合欢秘术</h3>
+            <div id="skill-list"></div>
+        </div>
+    </div>
+
+    <div id="action-panel" class="panel">
+        <h1 style="margin-top:0;">☁️ 游历天下 ☁️</h1>
+        <p style="color:#aaa; font-size:14px;">点击游历，寻找猎物。</p>
+        
+        <button type="button" id="btn-explore" style="font-size:20px; padding:15px 40px; background:#d63384; border:none;">
+            👁️ 寻觅炉鼎
+        </button>
+
+        <div id="npc-display" style="display:none;">
+            <h3 id="npc-name">???</h3>
+            <p id="npc-desc" style="color:#ddd; font-style:italic;">...</p>
+            <div id="npc-info" style="margin:10px 0; font-weight:bold; color:#ffeb3b;"></div>
+            
+            <div style="display:flex; gap:10px; margin-top:15px;">
+                <button type="button" id="btn-capture" style="background:#4caf50; border-color:#4caf50;">
+                    🕸️ 抓入后宫 (持续收益)
+                </button>
+                <button type="button" id="btn-ignore" style="background:#ff5722; border-color:#ff5722;">
+                    🔥 一次性采补 (销毁)
+                </button>
+            </div>
+        </div>
+        
+        <div id="log-panel" class="panel" style="margin-top: 20px; height: 150px; overflow-y: scroll; background: #000; border: 1px solid #e91e63; font-size: 13px; text-align: left; padding: 10px; position: relative;">
+            <div style="display:flex; justify-content:space-between; color: #888; border-bottom: 1px dashed #333; padding-bottom: 5px;">
+                <span>【合欢宗秘录】</span>
+                <span onclick="UI.clearLog()" style="cursor:pointer; color:#d63384;">[清空]</span>
+            </div>
+            <div id="game-logs"></div>
+        </div>
+
+        <div style="margin-top: 20px; border-top: 1px dashed #d63384; padding-top: 15px;">
+            <h3 style="margin: 0 0 10px 0; color: #aaa; font-size: 16px;">🛠️ 系统设置</h3>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <button type="button" id="btn-save" style="background: #2196f3; border-color: #2196f3;">💾 保存</button>
+                <button type="button" id="btn-export" style="background: #9c27b0; border-color: #9c27b0;">📤 导出</button>
+                <button type="button" id="btn-import" style="background: #ff9800; border-color: #ff9800;">📥 导入</button>
+                <button type="button" id="btn-reset" style="background: #f44336; border-color: #f44336;">💀 重开</button>
+            </div>
+            <div id="import-area" style="display:none; margin-top: 10px;">
+                <textarea id="import-data" placeholder="在此粘贴存档字符串..." style="width: 100%; height: 60px; background: #000; color: #fff; border: 1px solid #555;"></textarea>
+                <button id="btn-confirm-import" style="width: 100%; margin-top: 5px; background: #4caf50;">✅ 确认覆盖存档</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="harem-panel" class="panel">
+        <h3 style="text-align:center; border-bottom:1px solid #d63384; padding-bottom:10px; margin-top:0;">
+            🌹 炉鼎名录
+        </h3>
+        <div id="harem-list"></div>
+    </div>
+    
+    <div id="child-panel" class="panel" style="margin-top:20px; border-color: #03a9f4;">
+        <h3 style="text-align:center; border-bottom:1px solid #03a9f4; padding-bottom:10px; margin-top:0; color:#03a9f4;">
+            👶 宗门血脉
+        </h3>
+        <div id="child-list" style="max-height: 200px; overflow-y: auto;"></div>
+    </div>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
